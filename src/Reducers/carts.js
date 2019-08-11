@@ -1,10 +1,10 @@
-import * as types from "../Constains/actionTypes";
+import * as Types from "../Constains/actionTypes";
 
 const data = JSON.parse(localStorage.getItem("Cart"));
 const initialState = data ? data : [];
 // const initialState = [
 //   {
-//     products: {
+//     tasks: {
 //       id: 12,
 //       sku: 12064273040195392,
 //       title: "Cat Tee Black T-Shirt",
@@ -22,21 +22,29 @@ const initialState = data ? data : [];
 // ];
 
 const cart = (state = initialState, action) => {
-  var { products, quantity } = action;
-  var idnex = -1;
+  var { tasks, quantity } = action;
+  var index = -1;
   switch (action.type) {
-    case types.ADD_TO_CART:
-      console.log(action);
-      idnex = FindProductInCart(state, products);
-      console.log(idnex);
-      if (idnex !== -1) {
-        state[idnex].quantity += quantity;
+    case Types.ADD_TO_CART:
+      index = FindProductInCart(state, tasks);
+      // console.log(index);
+      if (index !== -1) {
+        state[index].quantity += quantity;
       } else {
         state.push({
-          products,
+          tasks,
           quantity
         });
       }
+      localStorage.setItem("Cart", JSON.stringify(state));
+      return [...state];
+
+    case Types.DELETE_PRODUCT_IN_CART:
+      index = FindProductInCart(state, tasks);
+      if (index !== -1) {
+        state.splice(index, 1);
+      }
+      localStorage.setItem("Cart", JSON.stringify(state));
       return [...state];
 
     default:
@@ -44,18 +52,16 @@ const cart = (state = initialState, action) => {
   }
 };
 
-var FindProductInCart = (cart, products) => {
-  var idnex = -1;
+var FindProductInCart = (cart, tasks) => {
+  var index = -1;
   if (cart.length > 0) {
-    console.log(cart);
-
     for (var i = 0; i < cart.length; i++) {
-      if (cart[i].products.id === products.id) {
-        idnex = i;
+      if (cart[i].tasks.id === tasks.id) {
+        index = i;
         break;
       }
     }
   }
-  return idnex;
+  return index;
 };
 export default cart;

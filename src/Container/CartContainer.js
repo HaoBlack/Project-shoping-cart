@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Cartitem from "../Components/Cart/carItem";
 import * as Messages from "../Constains/Messages";
-import ModelCard from "../Components/Cart/modelCard";
+import ModelCart from "../Components/Cart/modelCart";
 import CartResult from "../Components/Cart/cartResult";
+import { actDeleteProductInCart } from "../Actions/index";
 
 function mapStateToProps(state) {
   return {
@@ -11,12 +12,28 @@ function mapStateToProps(state) {
   };
 }
 
+function mapDispatchToProps(dispatch, props) {
+  return {
+    actDeleteProductInCart: tasks => {
+      dispatch(actDeleteProductInCart(tasks));
+    }
+  };
+}
+
 class CartContainer extends Component {
   showCartItem = carts => {
+    var { actDeleteProductInCart } = this.props;
     var result = Messages.MS_CART_EMPTY;
     if (carts.length > 0) {
       result = carts.map((item, index) => {
-        return <Cartitem key={index} item={item} index={index} />;
+        return (
+          <Cartitem
+            key={index}
+            item={item}
+            index={index}
+            actDeleteProductInCart={actDeleteProductInCart}
+          />
+        );
       });
     }
     return result;
@@ -36,14 +53,17 @@ class CartContainer extends Component {
 
     return (
       <div>
-        <ModelCard>
+        <ModelCart>
           {this.showCartItem(carts)}
           {this.showTotalAmount(carts)}
-        </ModelCard>
+        </ModelCart>
         {/* <CartResult /> */}
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(CartContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CartContainer);

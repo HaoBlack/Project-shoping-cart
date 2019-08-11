@@ -129,7 +129,7 @@ body {
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: #111;
+  background-color: rgb(39, 38, 38);
   /* overflow-x: hidden; */
   transition: 0.5s;
   padding-top: 60px;
@@ -145,6 +145,7 @@ body {
   text-align: center;
   line-height: 50px;
 }
+
 .close-nav:hover {
   background-color: #eabf00;
 }
@@ -233,8 +234,18 @@ body {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  position: absolute;
   right: 5%;
+  background-image: url(/image/sprite_delete-icon.png);
+  background-repeat: no-repeat ;
+  background-size: auto 100%;
+  position: absolute;
+}
+.sidenav .item_cart .item_cart_del:hover {
+  background-position-x: -17px;
+}
+.sidenav .item_cart:hover .item_cart_del .item_cart_circle{
+  color: #ececec !important;
+  font-size: 50px !important;
 }
 .sidenav .item_cart .item_cart_thumb {
   margin-right: 3%;

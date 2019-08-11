@@ -5,3 +5,4 @@ export const FILTER_SIZE = "FILTER_SIZE";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const OPEN_CART = "OPEN_CART";
 export const CLOSE_CART = "CLOSE_CART";
+export const DELETE_PRODUCT_IN_CART = "DELETE_PRODUCT_IN_CART"

@@ -24,11 +24,17 @@ export const filterSize = (filterType, filterValue) => {
     filterValue
   };
 };
-export const onAddToCart = (products, quantity) => {
+export const onAddToCart = (tasks, quantity) => {
   return {
     type: types.ADD_TO_CART,
-    products,
+    tasks,
     quantity
+  };
+};
+export const actDeleteProductInCart = tasks => {
+  return {
+    type: types.DELETE_PRODUCT_IN_CART,
+    tasks
   };
 };
 export const changeOpenToCart = () => {

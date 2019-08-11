@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 function mapStateToProps(state) {
   return {
-    
+    carts: state.carts
   };
 }
 
@@ -11,32 +11,38 @@ class carItem extends Component {
   showCountCart = (price, quantity) => {
     return price * quantity;
   };
+  onDelete(tasks) {
+    var { actDeleteProductInCart } = this.props;
+    actDeleteProductInCart(tasks);
+  }
   render() {
     let { item } = this.props;
-    // console.log(item);
 
     return (
       <div>
         <hr />
         <div className="item_cart">
-          <div className="item_cart_del" />
+          <div
+            className="item_cart_del"
+            onClick={() => this.onDelete(item.tasks)}
+          />
           <div className="item_cart_thumb">
             <img
-              src={`./image/products/${item.products.sku}_1.jpg`}
+              src={`./image/products/${item.tasks.sku}_1.jpg`}
               width="100%"
-              alt=""
+              alt={item.tasks.title}
             />
           </div>
           <div className="item_cart_circle">
-            <p>{item.products.title}</p>
+            <p>{item.tasks.title}</p>
             <p className="title">
-              {item.products.availableSizes} | {item.products.style}
+              {item.tasks.availableSizes} | {item.tasks.style}
               <br />
               {item.quantity}
             </p>
           </div>
           <div className="item_cart_price">
-            <p>$ {this.showCountCart(item.products.price, item.quantity)}</p>
+            <p>$ {this.showCountCart(item.tasks.price, item.quantity)}</p>
           </div>
         </div>
       </div>

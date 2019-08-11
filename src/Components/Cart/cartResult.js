@@ -10,7 +10,7 @@ class cartResult extends Component {
     var total = 0;
     if (carts.length > 0) {
       for (var i = 0; i < carts.length; i++) {
-        total += carts[i].products.price * carts[i].quantity;
+        total += carts[i].tasks.price * carts[i].quantity;
       }
     }
     return total;
