@@ -47,13 +47,20 @@ class CartContainer extends Component {
     return result;
   };
 
+  // showQuantityCart = carts => {
+  //   var result = null;
+  //   if (carts.length > 0) {
+  //     result = <HeaderCart carts={carts} />;
+  //   }
+  //   return result;
+  // };
   render() {
     let { carts } = this.props;
     // console.log(carts);
 
     return (
       <div>
-        <ModelCart>
+        <ModelCart carts = {carts}>
           {this.showCartItem(carts)}
           {this.showTotalAmount(carts)}
         </ModelCart>

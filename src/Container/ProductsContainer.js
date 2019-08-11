@@ -64,11 +64,7 @@ class ProductsContainer extends Component {
         break;
     }
 
-    return (
-      <div>
-        <ListProduct>{this.showProductsItem(filterTasks)}</ListProduct>
-      </div>
-    );
+    return <ListProduct>{this.showProductsItem(filterTasks)}</ListProduct>;
   }
 }
 

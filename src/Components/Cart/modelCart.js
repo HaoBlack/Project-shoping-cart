@@ -17,10 +17,16 @@ function mapDispatchToProps(dispatch) {
   };
 }
 class modelCard extends Component {
-
+  QuantityCart() {}
   render() {
     let { children } = this.props;
-    
+    let { carts } = this.props;
+    let tong = 0;
+
+    for (var i = 0; i < carts.length; i++) {
+      console.log((tong += carts[i].quantity));
+    }
+
     let { CheckOpenCloseCart } = this.props;
 
     function openNav() {
@@ -37,9 +43,9 @@ class modelCard extends Component {
         </span>
         <div className="cart_header">
           <span className="_bag">
-            <span className="bag__quantity"></span>
+            <span className="bag__quantity">{tong}</span>
           </span>
-          <span className="header_title" id="nav-icon2" >
+          <span className="header_title" id="nav-icon2">
             Cart
           </span>
         </div>

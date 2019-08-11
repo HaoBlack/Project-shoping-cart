@@ -8,6 +8,7 @@ function mapStateToProps(state) {
 }
 
 class carItem extends Component {
+  
   showCountCart = (price, quantity) => {
     return price * quantity;
   };

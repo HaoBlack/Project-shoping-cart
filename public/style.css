@@ -4,19 +4,22 @@ body {
   margin: 0;
 }
 .main {
-  margin: 50px auto 0 auto;
+   margin: 0 auto 0 auto;
   /* background-color: aquamarine; */
   width: 1600px;
   height: auto;
   padding: 20px 2%;
-  display: flex;
   /* background-image: url(../image/anh_bia.jpg); */
+}
+.Container_all{
+  margin-top: 5%;
 }
 /* ---------------------------------------------Filter------------------------- */
 .filters {
   /* background-color: bisque; */
   width: 15%;
   margin-right: 15px;
+  float: left;
 }
 .filters .title {
   margin-top: 2px;
@@ -75,10 +78,14 @@ body {
   vertical-align: middle;
   text-align: center;
 }
+.container
+{
+      margin-right: 5px!important;
+}
 /* ---------------------------------------------task------------------------------ */
 @media (min-width: 1200px) {
 .container {
-    max-width: 1311px !important;
+    max-width: 1200px !important;
   }
 }
 .row {
@@ -234,11 +241,11 @@ body {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  right: 5%;
+  left: 95%;
   background-image: url(/image/sprite_delete-icon.png);
   background-repeat: no-repeat ;
   background-size: auto 100%;
-  position: absolute;
+  position: relative;
 }
 .sidenav .item_cart .item_cart_del:hover {
   background-position-x: -17px;
